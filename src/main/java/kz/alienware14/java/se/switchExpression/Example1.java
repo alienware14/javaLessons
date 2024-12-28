@@ -4,11 +4,13 @@ public class Example1 {
 
     public static void main(String[] args) {
         // Expression switch java +14
+        expressionSwitchJava14(Day.FRIDAY);
         System.out.println(expressionSwitchJava14(Day.FRIDAY));
         // Expression switch
         System.out.println(expressionSwitch(Day.FRIDAY));
         // Statement(Good Old C-style Switch)
         System.out.println(oldSwitch(Day.FRIDAY));
+
     }
 
     private static int expressionSwitchJava14(Day day){
