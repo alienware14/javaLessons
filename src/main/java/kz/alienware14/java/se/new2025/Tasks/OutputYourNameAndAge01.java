@@ -1,6 +1,6 @@
 package kz.alienware14.java.se.new2025.Tasks;
 
-import java.util.Scanner;
+import java.util.*;
 
 /*Тапсырма
 Алғашқы бағдарламаны іске қосып көріңіз.
@@ -111,5 +111,69 @@ class CompareNamesAndAges{
         System.out.printf("Name1: %s , Age1: %d --- \n" +
                             "Name2: %s, Age2: %d --- \n%s\n",
                             name1, age1, name2, age2, result);
+    }
+}
+
+
+/**
+ * Жаңа тапсырма:
+ * Енді екі адамның жастарын салыстырумен ғана шектелмей,
+ * бірнеше адамның мәліметтерін енгізіп,
+ * олардың ішінен ең үлкен адамның есімі мен жасын анықтайтын бағдарлама жазайық.
+ *
+ * Тапсырма шарттары:
+ * Қолданушыдан бірнеше адамның есімі мен жасын енгізуді сұраңыз.
+ * Енгізу процесін жалғастыру үшін "Enter", тоқтату үшін "exit"
+ * деп жазуға мүмкіндік беріңіз.
+ * Енгізілген мәліметтердің ішінен ең үлкен адамды тауып,
+ * оның есімі мен жасын көрсетіңіз.
+ *
+ * Мақсатыңыз:
+ * Бағдарламаны орындап, бірнеше адамның есімдері мен жасын енгізіңіз.
+ * Мәліметтердің ішінен ең үлкен адамның кім екенін анықтаңыз.
+ */
+class FindOldestPerson{
+
+    static Scanner scanner = new Scanner(System.in);
+    static String oldestName = "";
+    static int oldestAge = 0;
+
+    public static void main(String[] args) {
+        dataInputFromThePersons(scanner);
+    }
+
+    static void printOldestPerson(String name, int age){
+        System.out.printf("Ең үлкен адам: %s, жасы: %d\n", name, age);
+    }
+
+    static void dataInputFromThePersons(Scanner scanner){
+        do {
+            if(!oldestName.isEmpty()){
+                System.out.print("Тағы Есім енгізіңіз (немесе 'exit' деп жазыңыз): ");
+            }else System.out.print("Есім енгізіңіз: ");
+
+            String name = scanner.nextLine();
+            if(name.isEmpty()) {
+                System.out.print("Қате шықты: Есім қайта енгізіңіз: ");
+                name = scanner.nextLine();
+            }
+            if(name.equalsIgnoreCase("exit")) break;
+
+            System.out.print("Жасын енгізіңіз: ");
+            int age = scanner.nextInt();
+            if(age <= 0) {
+                System.out.print("Қате шықты: Жасын қайта енгізіңіз: ");
+                age = scanner.nextInt();
+            }
+
+            scanner.nextLine();
+
+            if(age >= oldestAge){
+                oldestAge = age;
+                oldestName = name;
+            }
+        }
+        while (true);
+        printOldestPerson(oldestName, oldestAge);
     }
 }
